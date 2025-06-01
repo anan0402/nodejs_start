@@ -2,9 +2,9 @@ const newRouter = require('./news');
 const siteRouter = require('./site');
 
 function routes(app) {
-    app.use("/news", newRouter);
+    app.use('/news', newRouter);
 
-          app.use('/', siteRouter);
+        app.use("/", siteRouter);
 }
 
 module.exports = routes;

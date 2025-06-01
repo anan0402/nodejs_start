@@ -4,11 +4,10 @@
   "description": "start nodejs project",
   "main": "src/index.js",
   "scripts": {
-    "beauty": "lint-staged",
+    "beauty": "prettier --tab-width 4 --single-quote --trailing-comma all --write 'src/**/*.{js,json,scss}'",
     "start": "nodemon --inspect src/index.js",
     "watch": "node-sass --watch src/resources/scss --output  src/public/css ",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -24,12 +23,12 @@
   },
   "homepage": "https://github.com/anan0402/nodejs_start#readme",
   "lint-staged": {
-    "**/*.{js,json,scss}": "prettier --tab-width 4 --single-quote --trailing-comma all --write"
+    "src/**/*.{js,json,scss}": "prettier --tab-width 4 --single-quote --trailing-comma all --write"
   },
-  "husky": { 
-    "hooks": { 
-       "pre-commit": "lint-staged"
-   } 
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "dependencies": {
     "express": "^5.1.0",
