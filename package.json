@@ -4,7 +4,7 @@
   "description": "start nodejs project",
   "main": "src/index.js",
   "scripts": {
-    "beauty": "prettier --tab-width 4 --single-quote --trailing-comma all --write 'src/**/*.{js,json,scss}'",
+    "beauty": "lint-staged",
     "start": "nodemon --inspect src/index.js",
     "watch": "node-sass --watch src/resources/scss --output  src/public/css ",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,17 +25,11 @@
   "lint-staged": {
     "src/**/*.{js,json,scss}": "prettier --tab-width 4 --single-quote --trailing-comma all --write"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "echo 'Pre-commit hook running' && lint-staged"
-    }
-  },
   "dependencies": {
     "express": "^5.1.0",
     "express-handlebars": "^8.0.1"
   },
   "devDependencies": {
-    "husky": "^4.3.8",
     "lint-staged": "^16.1.0",
     "morgan": "^1.10.0",
     "node-sass": "^9.0.0",
