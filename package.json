@@ -27,7 +27,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "echo 'Pre-commit hook running' && lint-staged"
     }
   },
   "dependencies": {
