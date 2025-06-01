@@ -4,7 +4,7 @@
   "description": "start nodejs project",
   "main": "src/index.js",
   "scripts": {
-    "beauty": "prettier --tab-width 4 --single-quote --trailing-comma all --write 'src/**/*.{js,json,scss}'",
+    "beauty": "lint-staged",
     "start": "nodemon --inspect src/index.js",
     "watch": "node-sass --watch src/resources/scss --output  src/public/css ",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -22,6 +22,14 @@
     "url": "https://github.com/anan0402/nodejs_start/issues"
   },
   "homepage": "https://github.com/anan0402/nodejs_start#readme",
+  "lint-staged": {
+    "src/**/*.{js,json,scss}": "prettier --tab-width 4 --single-quote --trailing-comma all --write"
+  },
+  "husky":{
+    "hooks":{
+      "pre-commit":"lint-staged"
+    }
+  },
   "dependencies": {
     "express": "^5.1.0",
     "express-handlebars": "^8.0.1"
