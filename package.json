@@ -7,7 +7,8 @@
     "beauty": "lint-staged",
     "start": "nodemon --inspect src/index.js",
     "watch": "node-sass --watch src/resources/scss --output  src/public/css ",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -22,11 +23,6 @@
     "url": "https://github.com/anan0402/nodejs_start/issues"
   },
   "homepage": "https://github.com/anan0402/nodejs_start#readme",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "src/**/*.{js,json,scss}": "prettier --tab-width 4 --single-quote --trailing-comma all --write"
   },
@@ -35,7 +31,6 @@
     "express-handlebars": "^8.0.1"
   },
   "devDependencies": {
-    "husky": "^4.3.8",
     "lint-staged": "^16.1.0",
     "morgan": "^1.10.0",
     "node-sass": "^9.0.0",
