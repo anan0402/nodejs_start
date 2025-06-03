@@ -4,3 +4,10 @@ h1 {
     font-size: '13px';
     color: $red_color;
 }
+
+.image-fixed {
+    margin-top: 10px;
+    border-radius: 4px;
+    height: 120px;
+    object-fit: cover;
+}

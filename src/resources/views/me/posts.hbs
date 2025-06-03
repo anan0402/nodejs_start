@@ -1,0 +1,41 @@
+<div class="mt-4 container d-flex flex-column gap-3">
+  <h2>Your posts</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Last update</th>
+        <th scope="col" colspan="2">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#if courses.length}}
+        {{#each courses}}
+          <tr>
+            <th scope="row">{{sum @index 1}}</th>
+            <td>{{this.name}}</td>
+            <td>{{this.description}}</td>
+            <td>{{this.createdAt}}</td>
+            <td>
+              <div
+                class="d-flex align-items-center justify-content-center gap-2"
+              >
+                <a href="/">
+                  <i class="fa-solid fa-trash"></i>
+                </a>
+                <a href="/">
+                  <i class="fa-solid fa-pen"></i>
+                </a>
+              </div>
+            </td>
+          </tr>
+        {{/each}}
+      {{else}}
+        <p>No posts available.</p>
+      {{/if}}
+
+    </tbody>
+  </table>
+</div>
