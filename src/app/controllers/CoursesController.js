@@ -5,11 +5,11 @@ class CoursesController {
     //GET /courses/:slug
     show(req, res, next) {
         Course.findOne({ slug: req.params.slug })
-            .then((course) => {
+            .then((course) =>
                 res.render('courses/show', {
                     course: convertMongooseToObject(course),
-                });
-            })
+                }),
+            )
             .catch(next);
     }
 
@@ -26,7 +26,34 @@ class CoursesController {
         course
             .save()
             .then(() => res.redirect('/'))
-            .catch((err) => {});
+            .catch(next);
+    }
+
+    //GET detail /:id/edit
+    detail(req, res, next) {
+        Course.findById(req.params.id)
+            .then((course) =>
+                res.render('courses/edit', {
+                    course: convertMongooseToObject(course),
+                }),
+            )
+            .catch(next);
+    }
+
+    //PUT /:id
+    edit(req, res, next) {
+        const formData = req.body;
+        formData.image = `https://img.youtube.com/vi/${formData.videoId}/sddefault.jpg`;
+        Course.updateOne({ _id: req.params.id }, formData)
+            .then(() => res.redirect('/me/posts'))
+            .catch(next);
+    }
+
+    //DELETE /:id
+    delete(req, res, next) {
+        Course.deleteOne({ _id: req.params.id })
+            .then(() => res.redirect('/me/posts'))
+            .catch(next);
     }
 }
 

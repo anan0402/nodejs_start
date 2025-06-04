@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const handlebar = require('express-handlebars');
 var morgan = require('morgan');
+var methodOverride = require('method-override');
 const routes = require('./routes');
 const db = require('./config/db');
 const app = express();
@@ -23,6 +24,9 @@ app.use(express.static(path.join(__dirname, 'resources', 'scss')));
 
 //Http logger
 app.use(morgan('combined'));
+
+//Change method
+app.use(methodOverride('_method'));
 
 app.engine(
     '.hbs',

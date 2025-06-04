@@ -5,11 +5,11 @@ class SiteController {
     //GET method
     index(req, res, next) {
         Course.find({})
-            .then((courses) => {
+            .then((courses) =>
                 res.render('home', {
                     courses: convertMultiMongooseToObject(courses),
-                });
-            })
+                }),
+            )
             .catch(next);
     }
 
