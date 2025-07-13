@@ -11,6 +11,15 @@ class CoursesController {
             )
             .catch(next);
     }
+    recentlyDelete(req, res, next) {
+        Course.findDeleted({ deletedAt: { $ne: null } })
+            .then((courses) => {
+                res.render('me/recently-deleted', {
+                    courses: convertMultiMongooseToObject(courses),
+                });
+            })
+            .catch(next);
+    }
 }
 
 module.exports = new CoursesController();
