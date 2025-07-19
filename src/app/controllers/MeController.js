@@ -3,9 +3,13 @@ const { convertMultiMongooseToObject } = require('../../utils/mongoose');
 
 class CoursesController {
     posts(req, res, next) {
-        Course.find({})
-            .then((courses) =>
+        Promise.all([
+            Course.find({}),
+            Course.countDocumentsDeleted({ deletedAt: { $ne: null } }),
+        ])
+            .then(([courses, documentsDeleted]) =>
                 res.render('me/posts', {
+                    documentsDeleted,
                     courses: convertMultiMongooseToObject(courses),
                 }),
             )
